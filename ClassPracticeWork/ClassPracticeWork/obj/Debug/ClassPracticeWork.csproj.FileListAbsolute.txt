@@ -1,0 +1,7 @@
+S:\VisualStudio\ClassPracticeWork\ClassPracticeWork\bin\Debug\ClassPracticeWork.exe.config
+S:\VisualStudio\ClassPracticeWork\ClassPracticeWork\bin\Debug\ClassPracticeWork.exe
+S:\VisualStudio\ClassPracticeWork\ClassPracticeWork\bin\Debug\ClassPracticeWork.pdb
+S:\VisualStudio\ClassPracticeWork\ClassPracticeWork\obj\Debug\ClassPracticeWork.csprojAssemblyReference.cache
+S:\VisualStudio\ClassPracticeWork\ClassPracticeWork\obj\Debug\ClassPracticeWork.csproj.CoreCompileInputs.cache
+S:\VisualStudio\ClassPracticeWork\ClassPracticeWork\obj\Debug\ClassPracticeWork.exe
+S:\VisualStudio\ClassPracticeWork\ClassPracticeWork\obj\Debug\ClassPracticeWork.pdb
