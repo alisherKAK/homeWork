@@ -1,0 +1,7 @@
+S:\VisualStudio\HomeWork06_01_19\HomeWork06_01_19\bin\Debug\HomeWork06_01_19.exe.config
+S:\VisualStudio\HomeWork06_01_19\HomeWork06_01_19\bin\Debug\HomeWork06_01_19.exe
+S:\VisualStudio\HomeWork06_01_19\HomeWork06_01_19\bin\Debug\HomeWork06_01_19.pdb
+S:\VisualStudio\HomeWork06_01_19\HomeWork06_01_19\obj\Debug\HomeWork06_01_19.csprojAssemblyReference.cache
+S:\VisualStudio\HomeWork06_01_19\HomeWork06_01_19\obj\Debug\HomeWork06_01_19.csproj.CoreCompileInputs.cache
+S:\VisualStudio\HomeWork06_01_19\HomeWork06_01_19\obj\Debug\HomeWork06_01_19.exe
+S:\VisualStudio\HomeWork06_01_19\HomeWork06_01_19\obj\Debug\HomeWork06_01_19.pdb
