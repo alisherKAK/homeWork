@@ -1,0 +1,17 @@
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\bin\Debug\NamespacesLesson15_01_19.exe.config
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\bin\Debug\NamespacesLesson15_01_19.exe
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\bin\Debug\NamespacesLesson15_01_19.pdb
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\bin\Debug\Microsoft.IdentityModel.Logging.dll
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\bin\Debug\Newtonsoft.Json.dll
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\bin\Debug\Twilio.dll
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\bin\Debug\Newtonsoft.Json.xml
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\bin\Debug\Twilio.xml
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\obj\Debug\NamespacesLesson15_01_19.csprojAssemblyReference.cache
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\obj\Debug\NamespacesLesson15_01_19.csproj.CoreCompileInputs.cache
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\obj\Debug\NamespacesLesson15_01_19.csproj.CopyComplete
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\obj\Debug\NamespacesLesson15_01_19.exe
+S:\VisualStudio\NamespacesLesson15_01_19\NamespacesLesson15_01_19\obj\Debug\NamespacesLesson15_01_19.pdb
