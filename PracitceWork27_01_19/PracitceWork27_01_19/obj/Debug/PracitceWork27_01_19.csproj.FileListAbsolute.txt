@@ -1,0 +1,7 @@
+C:\Users\alish\source\repos\PracitceWork27_01_19\PracitceWork27_01_19\bin\Debug\PracitceWork27_01_19.exe.config
+C:\Users\alish\source\repos\PracitceWork27_01_19\PracitceWork27_01_19\bin\Debug\PracitceWork27_01_19.exe
+C:\Users\alish\source\repos\PracitceWork27_01_19\PracitceWork27_01_19\bin\Debug\PracitceWork27_01_19.pdb
+C:\Users\alish\source\repos\PracitceWork27_01_19\PracitceWork27_01_19\obj\Debug\PracitceWork27_01_19.csprojAssemblyReference.cache
+C:\Users\alish\source\repos\PracitceWork27_01_19\PracitceWork27_01_19\obj\Debug\PracitceWork27_01_19.csproj.CoreCompileInputs.cache
+C:\Users\alish\source\repos\PracitceWork27_01_19\PracitceWork27_01_19\obj\Debug\PracitceWork27_01_19.exe
+C:\Users\alish\source\repos\PracitceWork27_01_19\PracitceWork27_01_19\obj\Debug\PracitceWork27_01_19.pdb
