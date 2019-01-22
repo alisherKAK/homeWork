@@ -1,0 +1,7 @@
+S:\VisualStudio\Crafter22_01_19\Crafter22_01_19\bin\Debug\Crafter22_01_19.exe.config
+S:\VisualStudio\Crafter22_01_19\Crafter22_01_19\bin\Debug\Crafter22_01_19.exe
+S:\VisualStudio\Crafter22_01_19\Crafter22_01_19\bin\Debug\Crafter22_01_19.pdb
+S:\VisualStudio\Crafter22_01_19\Crafter22_01_19\obj\Debug\Crafter22_01_19.csprojAssemblyReference.cache
+S:\VisualStudio\Crafter22_01_19\Crafter22_01_19\obj\Debug\Crafter22_01_19.csproj.CoreCompileInputs.cache
+S:\VisualStudio\Crafter22_01_19\Crafter22_01_19\obj\Debug\Crafter22_01_19.exe
+S:\VisualStudio\Crafter22_01_19\Crafter22_01_19\obj\Debug\Crafter22_01_19.pdb
