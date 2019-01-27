@@ -16,17 +16,17 @@ namespace PracticeWork03_02_19_Storage_
         }
         public override double GetMemoryValueInGb()
         {
-            return (FreeMemory + OccupiedMemory)*Constants.IN_GIGABYTE_MEGABYTE_COUNT;
+            return (FreeMemory + OccupiedMemory)/Constants.IN_GIGABYTE_MEGABYTE_COUNT;
         }
-        public override void CopyInStorageInGb(double memoryValue)
+        public override void CopyInStorageInGb(double memoryValueInMb)
         {
-            FreeMemory -= memoryValue*Constants.IN_GIGABYTE_MEGABYTE_COUNT;
-            OccupiedMemory += memoryValue * Constants.IN_GIGABYTE_MEGABYTE_COUNT;
+            FreeMemory -= memoryValueInMb/Constants.IN_GIGABYTE_MEGABYTE_COUNT;
+            OccupiedMemory += memoryValueInMb/Constants.IN_GIGABYTE_MEGABYTE_COUNT;
         }
-        public override void CopyInStorageInMb(double memoryValue)
+        public override void CopyInStorageInMb(double memoryValueInMb)
         {
-            FreeMemory -= memoryValue;
-            OccupiedMemory += memoryValue;
+            FreeMemory -= memoryValueInMb;
+            OccupiedMemory += memoryValueInMb;
         }
         public override double GetFreeMemoryValueInMb()
         {
@@ -38,9 +38,18 @@ namespace PracticeWork03_02_19_Storage_
         }
         public override string GetFullInform()
         {
-            return $"{_name}; {_model}; {_speed}; {FreeMemory}; {OccupiedMemory}";
+            return $"Name: {_name}\n" +
+                   $"Model: {_model}\n" +
+                   $"Writing and Reading speed(Mb/s): {Speed}\n" +
+                   $"Free memory(Mb): {FreeMemory}\n" +
+                   $"Occupied memory(Mb): {OccupiedMemory}";
         }
 
-        public FlashMemory() { Speed = Constants.USB_3_SPEED_IN_MEGABYTE; }
+        public FlashMemory(double memoryInMb)
+        {
+            Speed = Constants.USB_3_SPEED_IN_MEGABYTE;
+            FreeMemory += memoryInMb;
+            OccupiedMemory = Constants.NULL;
+        }
     }
 }

@@ -12,23 +12,23 @@ namespace PracticeWork03_02_19_Storage_
         public double WriteSpeed { get; set; }
         public DVDDisckType Type { get; set; }
 
+        public override double GetMemoryValueInGb()
+        {
+            return (FreeMemory + OccupiedMemory)/Constants.IN_GIGABYTE_MEGABYTE_COUNT;
+        }
         public override double GetMemoryValueInMb()
         {
             return FreeMemory + OccupiedMemory;
         }
-        public override double GetMemoryValueInGb()
+        public override void CopyInStorageInGb(double memoryValueInGb)
         {
-            return (FreeMemory + OccupiedMemory) * Constants.IN_GIGABYTE_MEGABYTE_COUNT;
+            FreeMemory -= memoryValueInGb*Constants.IN_GIGABYTE_MEGABYTE_COUNT;
+            OccupiedMemory += memoryValueInGb*Constants.IN_GIGABYTE_MEGABYTE_COUNT;
         }
-        public override void CopyInStorageInGb(double memoryValue)
+        public override void CopyInStorageInMb(double memoryValueInMb)
         {
-            FreeMemory -= memoryValue * Constants.IN_GIGABYTE_MEGABYTE_COUNT;
-            OccupiedMemory += memoryValue * Constants.IN_GIGABYTE_MEGABYTE_COUNT;
-        }
-        public override void CopyInStorageInMb(double memoryValue)
-        {
-            FreeMemory -= memoryValue;
-            OccupiedMemory += memoryValue;
+            FreeMemory -= memoryValueInMb;
+            OccupiedMemory += memoryValueInMb;
         }
         public override double GetFreeMemoryValueInMb()
         {
@@ -40,10 +40,16 @@ namespace PracticeWork03_02_19_Storage_
         }
         public override string GetFullInform()
         {
-            return $"{_name}; {_model}; {Type}; {FreeMemory}; {OccupiedMemory}";
+            return $"Name: {_name}\n" +
+                   $"Model: {_model}\n" +
+                   $"Type: {Type.ToString()}" +
+                   $"Writing speed: {WriteSpeed}\n" +
+                   $"Read speed: {ReadSpeed}\n" +
+                   $"Free memory: {FreeMemory}\n" +
+                   $"Occupied memory: {OccupiedMemory}";
         }
 
-        public DVDDisck(DVDDisckType dvdType)
+        public DVDDisck(DVDDisckType dvdType, double readSpeed, double writeSpeed)
         {
             Type = dvdType;
             if(Type == DVDDisckType.Bilateral)
@@ -54,6 +60,9 @@ namespace PracticeWork03_02_19_Storage_
             {
                 FreeMemory = Constants.UNITARELAL_DVDDISCK_MEMORY;
             }
+            ReadSpeed = readSpeed;
+            WriteSpeed = writeSpeed;
+            OccupiedMemory = Constants.NULL;
         }
     }
 }
