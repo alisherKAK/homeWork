@@ -8,7 +8,7 @@ namespace HotelApp
     {
         static void Main(string[] args)
         {
-
+            Console.WriteLine("");
         }
         static int Chose()
         {
