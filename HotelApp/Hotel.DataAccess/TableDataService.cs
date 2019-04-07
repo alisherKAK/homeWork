@@ -15,7 +15,9 @@ namespace Hotel.DataAccess
             //TODO следать реализацию по созданию стандартной таблицы по укаанному типу
             Type type = typeof(T);
             var properties = type.GetProperties().ToList();
-            string query = $"create table {type.Name}s\n" +
+            string query = $"if not exists(select 1 from sys.tables where name='{type.Name}s')\n" +
+                           $"begin\n" +
+                           $"create table {type.Name}s\n" +
                            $"(" +
                            $"Id int identity primary key not null,\n";
             for(int i = 1; i < properties.Count; i++)
@@ -54,7 +56,7 @@ namespace Hotel.DataAccess
             }
             query = query.Trim('\n');
             query = query.Trim(',');
-            query += ")";
+            query += ")\nend";
             Console.WriteLine(query);
             using(var command = _connection.CreateCommand())
             {
@@ -163,7 +165,11 @@ namespace Hotel.DataAccess
                 }
                 catch (DbException exception)
                 {
-                    throw;
+                    if(exception.Message == "Invalid object name 'Tests'.")
+                    {
+                        CreateTable();
+                        Add(item);
+                    }
                 }
                 catch (Exception exception)
                 {

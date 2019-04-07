@@ -12,19 +12,15 @@ namespace HotelApp
             //Registration();
 
             //Console.ReadLine();
-            using (TableDataService<BookingBook> tableDataService = new TableDataService<BookingBook>())
+            using (TableDataService<Test> tableDataService = new TableDataService<Test>())
             {
-                BookingBook user = new BookingBook()
+                Test user = new Test()
                 {
                     Id = 1,
-                    BeginDate = DateTime.Now,
-                    EndDate = DateTime.Now, 
-                    Paid = true, 
-                    RoomId = 1,
-                    UserId = 1
+                    Name = "hruhc"
                 };
 
-                tableDataService.Add(user);
+                tableDataService.CreateTable();
             }
 
             Console.ReadLine();
