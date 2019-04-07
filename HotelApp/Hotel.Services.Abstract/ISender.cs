@@ -1,6 +1,6 @@
 ﻿namespace Hotel.Services.Abstract
 {
-    public interface IReporter
+    public interface ISender
     {
         void Send(string text);
     }

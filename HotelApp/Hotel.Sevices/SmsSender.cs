@@ -4,7 +4,7 @@ using Twilio.Rest.Api.V2010.Account;
 
 namespace Hotel.Sevices
 {
-    public class SmsSender : IReporter
+    public class SmsSender : ISender
     {
         public string Phone { get; set; }
 

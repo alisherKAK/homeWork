@@ -9,8 +9,23 @@ namespace HotelApp
     {
         static void Main(string[] args)
         {
-            TableDataService<User> service = new TableDataService<User>();
-            service.GetAll();
+            //Registration();
+
+            //Console.ReadLine();
+            using (TableDataService<BookingBook> tableDataService = new TableDataService<BookingBook>())
+            {
+                BookingBook user = new BookingBook()
+                {
+                    Id = 1,
+                    BeginDate = DateTime.Now,
+                    EndDate = DateTime.Now, 
+                    Paid = true, 
+                    RoomId = 1,
+                    UserId = 1
+                };
+
+                tableDataService.Add(user);
+            }
 
             Console.ReadLine();
         }
@@ -51,7 +66,7 @@ namespace HotelApp
 
             TelegramBot telegramBot = new TelegramBot();
             telegramBot.Open();
-            telegramBot.Send("");
+            telegramBot.Send("Напишите боту 'Get code' чтобы плучить код");
             CheckCode();
             telegramBot.Close();
             return user;
@@ -73,6 +88,23 @@ namespace HotelApp
                 Console.WriteLine(exception.Message);
 
                 CheckCode();
+            }
+        }
+        static bool IsUserHave(User newUser)
+        {
+            using (TableDataService<User> tableService = new TableDataService<User>())
+            {
+                var data = tableService.GetAll();
+
+                foreach (User user in data)
+                {
+                    if (user.Login == newUser.Login || user.Email == newUser.Email || user.Phone == newUser.Phone)
+                    {
+                        return false;
+                    }
+                }
+
+                return true;
             }
         }
     }
