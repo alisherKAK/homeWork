@@ -20,9 +20,10 @@ namespace Hotel.Sevices
 
         public void Send(string text)
         {
-            Process.Start("https://web.telegram.org/#/im?p=@StepCodeSendMessageBot");
             bot.OnMessage += Bot_OnMessage;
             bot.OnMessageEdited += Bot_OnMessage;
+
+            Process.Start("https://web.telegram.org/#/im?p=@StepCodeSendMessageBot");
         }
 
         private void Bot_OnMessage(object sender, Telegram.Bot.Args.MessageEventArgs e)
@@ -35,7 +36,7 @@ namespace Hotel.Sevices
                         "Command List:\n" +
                         "1)Get code");
                 }
-                else if (e.Message.Text == "Get code")
+                else if (e.Message.Text == "Get code" || e.Message.Text == "get code")
                 {
                     CodeGenerator.GenerateCode();
                     bot.SendTextMessageAsync(e.Message.Chat.Id, CodeGenerator.Code);

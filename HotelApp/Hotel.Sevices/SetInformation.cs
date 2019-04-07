@@ -57,7 +57,7 @@ namespace Hotel.Sevices
 
                 for (int i = 0; i < login.Length; i++)
                 {
-                    if (!((login[i] >= 'a' && login[i] <= 'z') || (login[i] >= 'A' && login[i] <= 'Z')) || !(login[i] >= '0' && login[i] <= '9') || login[i] != '.')
+                    if (!((login[i] >= 'a' && login[i] <= 'z') || (login[i] >= 'A' && login[i] <= 'Z')) && !(login[i] >= '0' && login[i] <= '9') && login[i] != '.')
                     {
                         throw new ArgumentException("Full Name был введен неверно");
                     }
@@ -124,7 +124,7 @@ namespace Hotel.Sevices
                     key = System.Console.ReadKey(true);
                     if (key.Key != ConsoleKey.Backspace)
                     {
-                        Console.WriteLine("*");
+                        Console.Write("*");
                         password += key.KeyChar;
                     }
                     else if (key.Key == ConsoleKey.Backspace)
@@ -138,7 +138,7 @@ namespace Hotel.Sevices
                             // move the cursor to the left by one character
                             System.Console.SetCursorPosition(pos - 1, System.Console.CursorTop);
                             // replace it with space
-                            Console.WriteLine(" ");
+                            Console.Write(" ");
                             // move the cursor to the left by one character again
                             System.Console.SetCursorPosition(pos - 1, System.Console.CursorTop);
                         }

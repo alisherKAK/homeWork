@@ -1,4 +1,5 @@
-﻿using Hotel.Models;
+﻿using Hotel.DataAccess;
+using Hotel.Models;
 using Hotel.Sevices;
 using System;
 
@@ -8,7 +9,10 @@ namespace HotelApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("");
+            TableDataService<User> service = new TableDataService<User>();
+            service.GetAll();
+
+            Console.ReadLine();
         }
         static int Chose()
         {
@@ -44,20 +48,20 @@ namespace HotelApp
                 Phone = SetInformation.SetPhoneNumber()
             };
 
-            string code = CodeGenerator.Code;
 
             TelegramBot telegramBot = new TelegramBot();
             telegramBot.Open();
-            CheckCode(code);
+            telegramBot.Send("");
+            CheckCode();
             telegramBot.Close();
             return user;
         }
-        static void CheckCode(string code)
+        static void CheckCode()
         {
             try
             {
                 Console.WriteLine("Введите полученный код: ");
-                if(Console.ReadLine().Trim() == code)
+                if(Console.ReadLine().Trim() == CodeGenerator.Code)
                 {
                     return;
                 }
@@ -68,7 +72,7 @@ namespace HotelApp
             {
                 Console.WriteLine(exception.Message);
 
-                CheckCode(code);
+                CheckCode();
             }
         }
     }
