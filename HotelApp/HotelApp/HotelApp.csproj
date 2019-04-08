@@ -44,6 +44,9 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -80,6 +83,10 @@
     <ProjectReference Include="..\Hotel.Models\Hotel.Models.csproj">
       <Project>{F0E9F4AC-70ED-4935-AB8C-04DFD03F014C}</Project>
       <Name>Hotel.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotel.PayPal\Hotel.PayPal.csproj">
+      <Project>{8a24c967-f8d2-4981-acb3-a804febbb25f}</Project>
+      <Name>Hotel.PayPal</Name>
     </ProjectReference>
     <ProjectReference Include="..\Hotel.Services.Abstract\Hotel.Services.Abstract.csproj">
       <Project>{BBC7B186-9757-47F1-99DC-FB56E22D16A3}</Project>

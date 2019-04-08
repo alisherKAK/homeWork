@@ -1,7 +1,9 @@
 ﻿using Hotel.DataAccess;
 using Hotel.Models;
+using Hotel.Services.Abstract;
 using Hotel.Sevices;
 using System;
+using System.Diagnostics;
 
 namespace HotelApp
 {
@@ -9,19 +11,7 @@ namespace HotelApp
     {
         static void Main(string[] args)
         {
-            //Registration();
-
-            //Console.ReadLine();
-            using (TableDataService<Test> tableDataService = new TableDataService<Test>())
-            {
-                Test user = new Test()
-                {
-                    Id = 1,
-                    Name = "hruhc"
-                };
-
-                tableDataService.CreateTable();
-            }
+            
 
             Console.ReadLine();
         }
@@ -60,11 +50,11 @@ namespace HotelApp
             };
 
 
-            TelegramBot telegramBot = new TelegramBot();
-            telegramBot.Open();
-            telegramBot.Send("Напишите боту 'Get code' чтобы плучить код");
+            ISender sender = GetSeneder.GetSender(Sender.TelegramSender);
+            sender.Open();
+            sender.Send("Напишите боту 'Get code' чтобы плучить код");
             CheckCode();
-            telegramBot.Close();
+            sender.Close();
             return user;
         }
         static void CheckCode()

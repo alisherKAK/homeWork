@@ -8,6 +8,8 @@ namespace Hotel.Sevices
     {
         public string Phone { get; set; }
 
+        public SmsSender(){}
+
         public SmsSender(string phone)
         {
             Phone = phone;
@@ -26,5 +28,9 @@ namespace Hotel.Sevices
                 to: new Twilio.Types.PhoneNumber(Phone)
             );
         }
+
+        public void Open(){}
+
+        public void Close(){}
     }
 }
