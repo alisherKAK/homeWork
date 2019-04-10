@@ -49,6 +49,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPayer.cs" />
     <Compile Include="ISender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

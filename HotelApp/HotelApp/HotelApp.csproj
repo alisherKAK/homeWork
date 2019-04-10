@@ -84,10 +84,6 @@
       <Project>{F0E9F4AC-70ED-4935-AB8C-04DFD03F014C}</Project>
       <Name>Hotel.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Hotel.PayPal\Hotel.PayPal.csproj">
-      <Project>{8a24c967-f8d2-4981-acb3-a804febbb25f}</Project>
-      <Name>Hotel.PayPal</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Hotel.Services.Abstract\Hotel.Services.Abstract.csproj">
       <Project>{BBC7B186-9757-47F1-99DC-FB56E22D16A3}</Project>
       <Name>Hotel.Services.Abstract</Name>
@@ -95,6 +91,14 @@
     <ProjectReference Include="..\Hotel.Sevices\Hotel.Sevices.csproj">
       <Project>{0C80B798-CB3A-4CB2-A85F-A17865790F10}</Project>
       <Name>Hotel.Sevices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hotel.Web\Hotel.Web.csproj">
+      <Project>{2e3eb0c6-ff47-4900-9b8e-cdb1d63f8650}</Project>
+      <Name>Hotel.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HotelConstants\HotelConstants.csproj">
+      <Project>{64E2738B-E6F2-4D85-A379-FD159CD642FE}</Project>
+      <Name>HotelConstants</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

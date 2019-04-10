@@ -52,14 +52,14 @@ namespace Hotel.Sevices
 
                 if (login == "")
                 {
-                    throw new ArgumentException("Full Name был введен неверно");
+                    throw new ArgumentException("Login был введен неверно");
                 }
 
                 for (int i = 0; i < login.Length; i++)
                 {
                     if (!((login[i] >= 'a' && login[i] <= 'z') || (login[i] >= 'A' && login[i] <= 'Z')) && !(login[i] >= '0' && login[i] <= '9') && login[i] != '.')
                     {
-                        throw new ArgumentException("Full Name был введен неверно");
+                        throw new ArgumentException("Login Name был введен неверно");
                     }
                 }
 
@@ -170,6 +170,53 @@ namespace Hotel.Sevices
                 Console.WriteLine(exception.Message);
 
                 return SetPassword();
+            }
+        }
+
+        public static DateTime SetBeginDate()
+        {
+            try
+            {
+                Console.WriteLine("Введите дату приезда (dd.mm.yyyy):");
+
+                DateTime beginDate = Convert.ToDateTime(Console.ReadLine().Trim());
+
+                return beginDate;
+            }
+            catch (FormatException exception)
+            {
+                Console.WriteLine(exception.Message);
+
+                return SetBeginDate();
+            }
+        }
+
+        public static DateTime SetEndDate(DateTime beginDate)
+        {
+            try
+            {
+                Console.WriteLine("Введите дару выезда (dd.mm.yyyy)");
+
+                DateTime endDate = Convert.ToDateTime(Console.ReadLine().Trim());
+
+                if(endDate > beginDate)
+                {
+                    return endDate;
+                }
+
+                throw new ArgumentException("Дата выезда не может быть ранее чем дата приезда");
+            }
+            catch (ArgumentException exception)
+            {
+                Console.WriteLine(exception.Message);
+
+                return SetEndDate(beginDate);
+            }
+            catch(FormatException exception)
+            {
+                Console.WriteLine(exception.Message);
+
+                return SetEndDate(beginDate);
             }
         }
     }

@@ -9,6 +9,5 @@ namespace Hotel.Models
         public int UserId { get; set; }
         public DateTime BeginDate { get; set; }
         public DateTime EndDate { get; set; }
-        public bool Paid { get; set; } 
     }
 }

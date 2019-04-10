@@ -2,8 +2,8 @@
 using Hotel.Models;
 using Hotel.Services.Abstract;
 using Hotel.Sevices;
+using HotelConstants;
 using System;
-using System.Diagnostics;
 
 namespace HotelApp
 {
@@ -11,87 +11,33 @@ namespace HotelApp
     {
         static void Main(string[] args)
         {
-            
+            bool isFinish = false;
+            bool isEnter = false;
 
-            Console.ReadLine();
-        }
-        static int Chose()
-        {
-            try
+            while(true)
             {
-                Console.WriteLine("1) Вход\n" +
-                                  "2) Регистрация\n" +
-                                  "3) Выход");
-
-                int chose;
-
-                if(int.TryParse(Console.ReadLine().Trim(), out chose))
+                switch (ProgramService.ChoseEnter())
                 {
-                    return chose;
+                    case Constants.REGISTRATION_CHOSE:
+                        ProgramService.Registration();
+                        break;
+                    case Constants.ENTRY_CHOSE:
+                        if(ProgramService.Enter())
+                        {
+                            isEnter = true;
+                        }
+                        break;
+                    case Constants.EXIT_CHOSE:
+                        isFinish = true;
+                        break;
                 }
-
-                throw new ArgumentException("Выбор сделан неверно");
-            }
-            catch(ArgumentException exception)
-            {
-                Console.WriteLine(exception.Message);
-
-                return Chose();
-            }
-        }
-        static User Registration()
-        {
-            User user = new User
-            {
-                Login = SetInformation.SetLogin(),
-                Password = SetInformation.SetPassword(),
-                Email = SetInformation.SetEmail(),
-                Phone = SetInformation.SetPhoneNumber()
-            };
-
-
-            ISender sender = GetSeneder.GetSender(Sender.TelegramSender);
-            sender.Open();
-            sender.Send("Напишите боту 'Get code' чтобы плучить код");
-            CheckCode();
-            sender.Close();
-            return user;
-        }
-        static void CheckCode()
-        {
-            try
-            {
-                Console.WriteLine("Введите полученный код: ");
-                if(Console.ReadLine().Trim() == CodeGenerator.Code)
+                if(isFinish == true || isEnter == true)
                 {
-                    return;
+                    break;
                 }
-
-                throw new ArgumentException("Неверный код ");
             }
-            catch (ArgumentException exception)
-            {
-                Console.WriteLine(exception.Message);
 
-                CheckCode();
-            }
-        }
-        static bool IsUserHave(User newUser)
-        {
-            using (TableDataService<User> tableService = new TableDataService<User>())
-            {
-                var data = tableService.GetAll();
 
-                foreach (User user in data)
-                {
-                    if (user.Login == newUser.Login || user.Email == newUser.Email || user.Phone == newUser.Phone)
-                    {
-                        return false;
-                    }
-                }
-
-                return true;
-            }
         }
     }
 }
