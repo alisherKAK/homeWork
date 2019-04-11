@@ -61,12 +61,12 @@ namespace HotelApp
                         BeginDate = beginDate,
                         EndDate = endDate
                     };
+                    dataService.Add(bookingBook);
 
                     IPayer payer = GetPayers.GetPayer(Payers.PayPal);
                     payer.Pay($"{chosenRoom.Number} room", 
                         ((endDate - beginDate).Days * chosenRoom.PricePerDay).ToString());
 
-                    dataService.Add(bookingBook);
 
                     isEnter = false;
                 }

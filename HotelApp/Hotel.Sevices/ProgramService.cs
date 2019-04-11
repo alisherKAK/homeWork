@@ -76,7 +76,11 @@ namespace Hotel.Sevices
             {
                 if(user.Login == login && user.Password == password)
                 {
-                    currentUser = user;
+                    currentUser.Id = user.Id;
+                    currentUser.Login = user.Login;
+                    currentUser.Password = user.Password;
+                    currentUser.Phone = user.Phone;
+                    currentUser.Email = user.Email;
                     return true;
                 }
             }

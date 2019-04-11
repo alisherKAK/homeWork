@@ -145,7 +145,7 @@ namespace Hotel.DataAccess
                         query += $"@{properties[i].Name.ToLower()},";
                         DbParameter parameter = command.CreateParameter();
                         parameter.ParameterName = $"@{properties[i].Name.ToLower()}";
-                        parameter.Value = properties[i].GetValue(item);
+                        parameter.Value = properties[i].GetValue(item).ToString();
                         parameter.DbType = System.Data.DbType.DateTime;
                         command.Parameters.Add(parameter);
                     }
