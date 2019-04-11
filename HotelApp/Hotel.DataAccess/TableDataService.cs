@@ -57,7 +57,7 @@ namespace Hotel.DataAccess
             query = query.Trim('\n');
             query = query.Trim(',');
             query += ")\nend";
-            Console.WriteLine(query);
+
             using(var command = _connection.CreateCommand())
             {
                 command.CommandText = query;
@@ -85,6 +85,7 @@ namespace Hotel.DataAccess
                 using (var command = _connection.CreateCommand())
                 {
                     command.CommandText = query;
+
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -99,13 +100,15 @@ namespace Hotel.DataAccess
                             data.Add(item);
                         }
                     }
-
                 }
                 return data;
             }
             catch(DbException exception)
             {
-                Console.WriteLine(exception.Message);
+                if (exception.Message == $"Invalid object name '{type.Name}s'.")
+                {
+                    CreateTable();
+                }
                 return new List<T>();
             }
         }
@@ -157,7 +160,7 @@ namespace Hotel.DataAccess
                 }
                 query = query.Trim(',');
                 query += ")";
-                Console.WriteLine(query);
+
                 command.CommandText = query;
                 try
                 {
@@ -165,7 +168,7 @@ namespace Hotel.DataAccess
                 }
                 catch (DbException exception)
                 {
-                    if(exception.Message == "Invalid object name 'Tests'.")
+                    if(exception.Message == $"Invalid object name '{type.Name}s'.")
                     {
                         CreateTable();
                         Add(item);

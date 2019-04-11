@@ -108,7 +108,6 @@ namespace Hotel.Web.Controllers
             catch (Exception exception)
             {
                 Console.WriteLine(exception.Message);
-                throw;
                 return Redirect("https://google.com");
             }
         }

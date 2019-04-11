@@ -9,6 +9,9 @@ namespace Hotel.Sevices
     {
         public static User Registration()
         {
+            TableDataService<User> dataService = new TableDataService<User>();
+            var users = dataService.GetAll();
+
             User newUser = new User()
             {
                 Login = SetInformation.SetLogin(),
@@ -16,6 +19,15 @@ namespace Hotel.Sevices
                 Email = SetInformation.SetEmail(),
                 Phone = SetInformation.SetPhoneNumber()
             };
+
+
+            foreach(User user in users)
+            {
+                if(user.Login == newUser.Login || user.Phone == newUser.Phone)
+                {
+                    throw new ArgumentException("Уже есть user с таким логином или телефоном");
+                }
+            }
 
             ISender sender = GetSeneder.GetSender(Senders.TelegramSender);
 
@@ -51,7 +63,7 @@ namespace Hotel.Sevices
             }
         }
 
-        public static bool Enter()
+        public static bool Enter(User currentUser)
         {
             TableDataService<User> dataService = new TableDataService<User>();
             
@@ -64,6 +76,7 @@ namespace Hotel.Sevices
             {
                 if(user.Login == login && user.Password == password)
                 {
+                    currentUser = user;
                     return true;
                 }
             }
@@ -96,7 +109,7 @@ namespace Hotel.Sevices
             }
         }
 
-        public static int ChoseHotel()
+        public static Hotel.Models.Hotel ChoseHotel()
         {
             try
             {
@@ -116,7 +129,13 @@ namespace Hotel.Sevices
 
                 if(int.TryParse(Console.ReadLine().Trim(), out hotelId) && hotelId <= hotels.Count && hotelId >= 1)
                 {
-                    return hotelId;
+                    for (int i = 0; i < hotels.Count; i++)
+                    {
+                        if(hotels[i].Id == hotelId)
+                        {
+                            return hotels[i];
+                        }
+                    }
                 }
 
                 throw new ArgumentException("Такого отеля нет");
@@ -129,7 +148,7 @@ namespace Hotel.Sevices
             }
         }
 
-        public static int ChoseRoom(int hotelId)
+        public static Room ChoseRoom(int hotelId)
         {
             try
             {
@@ -156,7 +175,7 @@ namespace Hotel.Sevices
                     {
                         if (rooms[i].HotelId == hotelId && rooms[i].Id == roomId)
                         {
-                            return roomId;
+                            return rooms[i];
                         }
                     }
                 }

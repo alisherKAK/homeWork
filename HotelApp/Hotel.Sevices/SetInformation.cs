@@ -173,11 +173,11 @@ namespace Hotel.Sevices
             }
         }
 
-        public static DateTime SetBeginDate()
+        public static DateTime SetBeginDateAndTime()
         {
             try
             {
-                Console.WriteLine("Введите дату приезда (dd.mm.yyyy):");
+                Console.WriteLine("Введите дату приезда (dd.mm.yyyy hh:mm:ss):");
 
                 DateTime beginDate = Convert.ToDateTime(Console.ReadLine().Trim());
 
@@ -187,15 +187,15 @@ namespace Hotel.Sevices
             {
                 Console.WriteLine(exception.Message);
 
-                return SetBeginDate();
+                return SetBeginDateAndTime();
             }
         }
 
-        public static DateTime SetEndDate(DateTime beginDate)
+        public static DateTime SetEndDateAndTime(DateTime beginDate)
         {
             try
             {
-                Console.WriteLine("Введите дару выезда (dd.mm.yyyy)");
+                Console.WriteLine("Введите дару выезда (dd.mm.yyyy hh:mm:ss)");
 
                 DateTime endDate = Convert.ToDateTime(Console.ReadLine().Trim());
 
@@ -210,13 +210,13 @@ namespace Hotel.Sevices
             {
                 Console.WriteLine(exception.Message);
 
-                return SetEndDate(beginDate);
+                return SetEndDateAndTime(beginDate);
             }
             catch(FormatException exception)
             {
                 Console.WriteLine(exception.Message);
 
-                return SetEndDate(beginDate);
+                return SetEndDateAndTime(beginDate);
             }
         }
     }
