@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Hotel.DataAccess;
 using Hotel.Models;
 using Hotel.Services.Abstract;
@@ -9,8 +10,12 @@ namespace Hotel.Sevices
     {
         public static User Registration()
         {
-            TableDataService<User> dataService = new TableDataService<User>();
-            var users = dataService.GetAll();
+            List<User> users;
+            using (TableDataService<User> dataService = new TableDataService<User>())
+            {
+                users = dataService.GetAll();
+            }
+
 
             User newUser = new User()
             {
@@ -65,10 +70,14 @@ namespace Hotel.Sevices
 
         public static bool Enter(User currentUser)
         {
-            TableDataService<User> dataService = new TableDataService<User>();
-            
-            var users = dataService.GetAll();
-            
+            List<User> users;
+
+            using (TableDataService<User> dataService = new TableDataService<User>())
+            {
+                users = dataService.GetAll();
+            }
+
+
             string login = SetInformation.SetLogin();
             string password = SetInformation.SetPassword();
             
@@ -117,8 +126,11 @@ namespace Hotel.Sevices
         {
             try
             {
-                TableDataService<Hotel.Models.Hotel> dataService = new TableDataService<Hotel.Models.Hotel>();
-                var hotels = dataService.GetAll();
+                List<Hotel.Models.Hotel> hotels;
+                using (TableDataService<Hotel.Models.Hotel> dataService = new TableDataService<Hotel.Models.Hotel>())
+                {
+                    hotels = dataService.GetAll();
+                }
 
                 Console.WriteLine("Выберите отель\n" +
                                   "=========================================\n");
@@ -156,9 +168,12 @@ namespace Hotel.Sevices
         {
             try
             {
-                TableDataService<Room> dataService = new TableDataService<Room>();
+                List<Room> rooms;
+                using (TableDataService<Room> dataService = new TableDataService<Room>())
+                {
+                    rooms = dataService.GetAll();
+                }
 
-                var rooms = dataService.GetAll();
 
                 Console.WriteLine("Выберите комнату, если ее нет нажмите ESC\n" +
                                   "=========================================\n");

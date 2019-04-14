@@ -22,9 +22,11 @@ namespace HotelApp
                     case Constants.REGISTRATION_CHOSE:
                         try
                         {
-                            TableDataService<User> dataService = new TableDataService<User>();
-                            User newUser = ProgramService.Registration();
-                            dataService.Add(newUser);
+                            using (TableDataService<User> dataService = new TableDataService<User>())
+                            {
+                                User newUser = ProgramService.Registration();
+                                dataService.Add(newUser);
+                            }
                         }
                         catch(ArgumentException exception)
                         {
@@ -47,27 +49,29 @@ namespace HotelApp
                 }
                 if(isEnter == true)
                 {
-                    TableDataService<BookingBook> dataService = new TableDataService<BookingBook>();
-
-                    Hotel.Models.Hotel chosenHotel = ProgramService.ChoseHotel();
-                    Room chosenRoom = ProgramService.ChoseRoom(chosenHotel.Id);
-                    DateTime beginDate = SetInformation.SetBeginDateAndTime();
-                    DateTime endDate = SetInformation.SetEndDateAndTime(beginDate);
-
-                    BookingBook bookingBook = new BookingBook()
+                    using (TableDataService<BookingBook> dataService = new TableDataService<BookingBook>())
                     {
-                        UserId = currentUser.Id,
-                        RoomId = chosenRoom.Id,
-                        BeginDate = beginDate,
-                        EndDate = endDate
-                    };
-                    dataService.Add(bookingBook);
 
-                    IPayer payer = GetPayers.GetPayer(Payers.PayPal);
-                    payer.Pay($"{chosenRoom.Number} room", 
-                        ((endDate - beginDate).Days * chosenRoom.PricePerDay).ToString());
+                        Hotel.Models.Hotel chosenHotel = ProgramService.ChoseHotel();
+                        Room chosenRoom = ProgramService.ChoseRoom(chosenHotel.Id);
+                        DateTime beginDate = SetInformation.SetBeginDateAndTime();
+                        DateTime endDate = SetInformation.SetEndDateAndTime(beginDate);
+
+                        BookingBook bookingBook = new BookingBook()
+                        {
+                            UserId = currentUser.Id,
+                            RoomId = chosenRoom.Id,
+                            BeginDate = beginDate,
+                            EndDate = endDate
+                        };
+                        dataService.Add(bookingBook);
 
 
+                        IPayer payer = GetPayers.GetPayer(Payers.PayPal);
+                        payer.Pay($"{chosenRoom.Number} room",
+                            ((endDate - beginDate).Days * chosenRoom.PricePerDay).ToString());
+
+                    }
                     isEnter = false;
                 }
                 else if(isFinish == true)

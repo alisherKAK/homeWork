@@ -29,7 +29,7 @@ namespace Hotel.Sevices
         public void Send(string text)
         {
             Console.WriteLine(text);
-            Thread.Sleep(1500);
+            Thread.Sleep(5000);
             Process.Start("https://web.telegram.org/#/im?p=@StepCodeSendMessageBot");
         }
 
