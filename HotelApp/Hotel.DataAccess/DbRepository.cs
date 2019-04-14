@@ -29,7 +29,7 @@ namespace Hotel.DataAccess
 
         public List<string> GetTables()
         {
-            List<string> tabels = new List<string>();
+            List<string> tables = new List<string>();
             string query = "select * from sysobjects where xtype='U'";
 
             using (var command = _connection.CreateCommand())
@@ -40,10 +40,10 @@ namespace Hotel.DataAccess
                     DbDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        tabels.Add(reader.GetString(0));
+                        tables.Add(reader.GetString(0));
                     }
 
-                    return tabels;
+                    return tables;
                 }
                 catch (DbException exception)
                 {
