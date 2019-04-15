@@ -37,35 +37,43 @@ namespace HomeWork14_04_19.WinFormApp
             switch(tableName)
             {
                 case "Buyers":
-                    label1.Text = "Id;Name;Surname\n";
+                    dataGridView1.Columns.Add("", "Id");
+                    dataGridView1.Columns.Add("", "Name");
+                    dataGridView1.Columns.Add("", "Surname");
                     using(TableDataService<Buyer> dataService = new TableDataService<Buyer>())
                     {
                         var buyers = dataService.GetAll();
                         foreach(Buyer buyer in buyers)
                         {
-                            label1.Text = $"{buyer.Id};{buyer.Name};{buyer.Surname}\n";
+                            dataGridView1.Rows.Add(buyer.Id, buyer.Name, buyer.Surname);
                         }
                     }
                     break;
                 case "Sales":
-                    label1.Text = "Id;BuyerId;SellerId;TransactionAmount;TransactionDate";
+                    dataGridView1.Columns.Add("", "Id");
+                    dataGridView1.Columns.Add("", "BuyerId");
+                    dataGridView1.Columns.Add("", "SellerId");
+                    dataGridView1.Columns.Add("", "TransactionAmount");
+                    dataGridView1.Columns.Add("", "TransactionDate");
                     using (TableDataService<Sale> dataService = new TableDataService<Sale>())
                     {
                         var sales = dataService.GetAll();
                         foreach (Sale sale in sales)
                         {
-                            label1.Text = $"{sale.Id};{sale.BuyerId};{sale.SellerId};{sale.TransactionAmount}{sale.TransactionDate}\n";
+                            dataGridView1.Rows.Add(sale.Id, sale.BuyerId, sale.SellerId, sale.TransactionAmount, sale.TransactionDate);
                         }
                     }
                     break;
                 case "Sellers":
-                    label1.Text = "Id;Name;Surname\n";
+                    dataGridView1.Columns.Add("", "Id");
+                    dataGridView1.Columns.Add("", "Name");
+                    dataGridView1.Columns.Add("", "Surname");
                     using (TableDataService<Seller> dataService = new TableDataService<Seller>())
                     {
                         var sellers = dataService.GetAll();
                         foreach (Seller seller in sellers)
                         {
-                            label1.Text = $"{seller.Id};{seller.Name};{seller.Surname}\n";
+                            dataGridView1.Rows.Add(seller.Id, seller.Name, seller.Surname);
                         }
                     }
                     break;
