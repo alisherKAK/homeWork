@@ -203,21 +203,5 @@ namespace HomeWork25_04_19.DataAccess
                 }
             }
         }
-
-        public DbDataAdapter GetDataAdapter()
-        {
-            Type type = typeof(T);
-
-            var dataAdapter = _providerFactory.CreateDataAdapter();
-
-            var selectUsersCommand = _connection.CreateCommand();
-            selectUsersCommand.CommandText = $"select * from {type.Name}s";
-            dataAdapter.SelectCommand = selectUsersCommand;
-
-            var commandBuilder = _providerFactory.CreateCommandBuilder();
-            commandBuilder.DataAdapter = dataAdapter;
-
-            return dataAdapter;
-        }
     }
 }

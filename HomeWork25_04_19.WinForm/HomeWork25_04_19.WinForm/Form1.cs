@@ -29,32 +29,49 @@ namespace HomeWork25_04_19.WinForm
             {
                 var users = dataService.GetAll();
 
-                foreach(User user in users)
+                for(int i = 0; i < users.Count; i++)
                 {
-                    listBox1.Items.Add(user.Login);
+                    listBox1.Items.Add(users[i].Login);
                 }
             }
         }
 
         private void listBox1_DoubleClick(object sender, EventArgs e)
         {
-            using(TableDataService<User> dataService = new TableDataService<User>())
+            UserEditFrom userEditFrom;
+            string selectedItem = listBox1.SelectedItem?.ToString();
+
+            if (selectedItem != null)
             {
-                int selectedItemIndex = listBox1.SelectedIndex;
-                if (selectedItemIndex >= 0)
+                dataGridView1.Rows.Clear();
+
+                using (TableDataService<User> dataService = new TableDataService<User>())
                 {
                     var users = dataService.GetAll();
 
-                    UserEditFrom userEditFrom = new UserEditFrom(users[selectedItemIndex], selectedItemIndex);
-                    userEditFrom.Show();
+                    for (int i = 0; i < users.Count; i++)
+                    {
+                        if (users[i].Login == selectedItem)
+                        {
+                            userEditFrom = new UserEditFrom(users[i]);
+
+                            if (userEditFrom.ShowDialog(this) == DialogResult.Cancel)
+                            {
+                                AdminFilter();
+                            }
+                        }
+                    }
                 }
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UserAddForm userDeleteForm = new UserAddForm();
-            userDeleteForm.Show();
+            UserAddForm userAddForm = new UserAddForm();
+            if(userAddForm.ShowDialog(this) == DialogResult.Cancel)
+            {
+                AdminFilter();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -87,9 +104,9 @@ namespace HomeWork25_04_19.WinForm
 
         private void listBox1_Click(object sender, EventArgs e)
         {
-            int selectedItemIndex = listBox1.SelectedIndex;
+            string selectedItem = listBox1.SelectedItem?.ToString();
 
-            if (selectedItemIndex >= 0)
+            if (selectedItem != null)
             {
                 dataGridView1.Rows.Clear();
 
@@ -97,7 +114,53 @@ namespace HomeWork25_04_19.WinForm
                 {
                     var users = dataService.GetAll();
 
-                    dataGridView1.Rows.Add(users[selectedItemIndex].Id, users[selectedItemIndex].Login, users[selectedItemIndex].Password, users[selectedItemIndex].Address, users[selectedItemIndex].PhoneNumber, users[selectedItemIndex].IsAdmin);
+                    for(int i = 0; i < users.Count; i++)
+                    {
+                        if(users[i].Login == selectedItem)
+                        {
+                            dataGridView1.Rows.Add(users[i].Id, users[i].Login, users[i].Password.ToString().GetHashCode(), users[i].Address, users[i].PhoneNumber, users[i].IsAdmin);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void checkBox1_Click(object sender, EventArgs e)
+        {
+            AdminFilter();
+        }
+
+        private void AdminFilter()
+        {
+            if (checkBox1.Checked)
+            {
+                listBox1.Items.Clear();
+
+                using (TableDataService<User> dataService = new TableDataService<User>())
+                {
+                    var users = dataService.GetAll();
+
+                    for (int i = 0; i < users.Count; i++)
+                    {
+                        if (users[i].IsAdmin)
+                        {
+                            listBox1.Items.Add(users[i].Login);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                listBox1.Items.Clear();
+
+                using (TableDataService<User> dataService = new TableDataService<User>())
+                {
+                    var users = dataService.GetAll();
+
+                    for (int i = 0; i < users.Count; i++)
+                    {
+                        listBox1.Items.Add(users[i].Login);
+                    }
                 }
             }
         }

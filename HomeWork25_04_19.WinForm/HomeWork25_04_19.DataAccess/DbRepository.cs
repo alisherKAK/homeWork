@@ -11,7 +11,7 @@ namespace HomeWork25_04_19.DataAccess
     public class DbRepository : IDisposable
     {
         protected DbConnection _connection;
-        protected DbProviderFactory _providerFactory;
+        private DbProviderFactory _providerFactory;
 
         public DbRepository()
         {
@@ -50,6 +50,20 @@ namespace HomeWork25_04_19.DataAccess
                     throw;
                 }
             }
+        }
+
+        public DbDataAdapter GetDataAdapter()
+        {
+            var dataAdapter = _providerFactory.CreateDataAdapter();
+
+            var selectUsersCommand = _connection.CreateCommand();
+            selectUsersCommand.CommandText = "select * from Users";
+            dataAdapter.SelectCommand = selectUsersCommand;
+
+            var commandBuilder = _providerFactory.CreateCommandBuilder();
+            commandBuilder.DataAdapter = dataAdapter;
+
+            return dataAdapter;
         }
     }
 }

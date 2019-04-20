@@ -1,5 +1,6 @@
 ﻿using HomeWork25_04_19.DataAccess;
 using HomeWork25_04_19.Models;
+using HomeWork25_04_19.Sevices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +15,9 @@ namespace HomeWork25_04_19.WinForm
 {
     public partial class UserEditFrom : Form
     {
-        private int userIndex;
+        User changedUser = new User();
 
-        public UserEditFrom(User user, int index)
+        public UserEditFrom(User user)
         {
             InitializeComponent();
 
@@ -29,40 +30,49 @@ namespace HomeWork25_04_19.WinForm
 
             dataGridView1.Rows.Add(user.Id, user.Login, user.Password, user.Address, user.PhoneNumber, user.IsAdmin);
 
-            userIndex = index;
+            changedUser.Id = user.Id;
         }
 
-        private void SaveChanges_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            var firstRow = dataGridView1.Rows[Constants.FIRST_ELEMENT];
+
             using(TableDataService<User> dataService = new TableDataService<User>())
             {
-                var dataSet = new DataSet("ShopDb");
-                var dataAdapter = dataService.GetDataAdapter();
 
-                dataAdapter.Fill(dataSet, "Users");
-
-                var usersTable = dataSet.Tables["Users"];
-
-                var row = usersTable.Rows[userIndex];
                 try
                 {
-                    row.BeginEdit();
-                    if(Checker.CheckLogin(dataGridView1[1, 0].Value.ToString()))
-                        row["Login"] = dataGridView1[1, 0].Value;
-                    row["Password"] = dataGridView1[2, 0].Value;
-                    row["Address"] = dataGridView1[3, 0].Value;
-                    row["PhoneNumber"] = dataGridView1[4, 0].Value;
-                    row["IsAdmin"] = dataGridView1[5, 0].Value;
-                    row.EndEdit();
-                }
-                catch (ArgumentException exception)
-                {
-                    row.CancelEdit();
-                }
+                    changedUser.Address = firstRow.Cells["Address"].Value.ToString();
 
-                dataAdapter.Update(dataSet, "Users");
+                    if(CheckData.IsLoginCorrect(firstRow.Cells["Login"].Value.ToString()))
+                    {
+                        changedUser.Login = firstRow.Cells["Login"].Value.ToString();
+                    }
+
+                    if(CheckData.IsPasswordCorrect(firstRow.Cells["Password"].Value.ToString()))
+                    {
+                        changedUser.Password = firstRow.Cells["Password"].Value.ToString();
+                    }
+
+                    if(CheckData.IsPhoneNumberCorrect(firstRow.Cells["PhoneNumber"].Value.ToString()))
+                    {
+                        changedUser.PhoneNumber = firstRow.Cells["PhoneNumber"].Value.ToString();
+                    }
+
+                    if (CheckData.IsAdminCorrect(firstRow.Cells["IsAdmin"].Value.ToString()))
+                    {
+                        changedUser.IsAdmin = (bool)firstRow.Cells["IsAdmin"].Value;
+                    }
+
+                    dataService.DeleteById(changedUser.Id);
+                    dataService.Add(changedUser);
+                    this.Close();
+                }
+                catch(ArgumentException exception)
+                {
+                    MessageBox.Show(this, exception.Message);
+                }
             }
-            this.Close();
         }
     }
 }
