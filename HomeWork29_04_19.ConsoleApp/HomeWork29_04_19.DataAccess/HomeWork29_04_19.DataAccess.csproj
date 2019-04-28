@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{822609F5-9013-442C-9167-F910C31EBB6C}</ProjectGuid>
+    <ProjectGuid>{AC8B34A9-92CA-46A0-9E69-DD7F9B759C0C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HomeWork29_04_19.Models</RootNamespace>
-    <AssemblyName>HomeWork29_04_19.Models</AssemblyName>
+    <RootNamespace>HomeWork29_04_19.DataAccess</RootNamespace>
+    <AssemblyName>HomeWork29_04_19.DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,8 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,23 +50,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="City.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="PurchasedTickets.cs" />
-    <Compile Include="RailwayCarriage.cs" />
-    <Compile Include="Spot.cs" />
-    <Compile Include="Stateroom.cs" />
-    <Compile Include="Ticket.cs" />
-    <Compile Include="TicketSeat.cs" />
-    <Compile Include="Train.cs" />
+    <Compile Include="Migrations\201904281220185_InitialCreate.cs" />
+    <Compile Include="Migrations\201904281220185_InitialCreate.Designer.cs">
+      <DependentUpon>201904281220185_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="TicketContext.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HomeWork29_04_19.AbstractModels\HomeWork29_04_19.AbstractModels.csproj">
-      <Project>{CD328833-B973-43A1-829F-972959084751}</Project>
-      <Name>HomeWork29_04_19.AbstractModels</Name>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HomeWork29_04_19.Models\HomeWork29_04_19.Models.csproj">
+      <Project>{822609F5-9013-442C-9167-F910C31EBB6C}</Project>
+      <Name>HomeWork29_04_19.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201904281220185_InitialCreate.resx">
+      <DependentUpon>201904281220185_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

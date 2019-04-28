@@ -33,7 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,6 +55,29 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HomeWork29_04_19.AbstractModels\HomeWork29_04_19.AbstractModels.csproj">
+      <Project>{cd328833-b973-43a1-829f-972959084751}</Project>
+      <Name>HomeWork29_04_19.AbstractModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeWork29_04_19.ConstantsAndEnums\HomeWork29_04_19.ConstantsAndEnums.csproj">
+      <Project>{E83B10DA-4A05-42EE-950B-D80D29114137}</Project>
+      <Name>HomeWork29_04_19.ConstantsAndEnums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeWork29_04_19.DataAccess\HomeWork29_04_19.DataAccess.csproj">
+      <Project>{AC8B34A9-92CA-46A0-9E69-DD7F9B759C0C}</Project>
+      <Name>HomeWork29_04_19.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeWork29_04_19.Models\HomeWork29_04_19.Models.csproj">
+      <Project>{822609F5-9013-442C-9167-F910C31EBB6C}</Project>
+      <Name>HomeWork29_04_19.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeWork29_04_19.Services\HomeWork29_04_19.Services.csproj">
+      <Project>{16209F4D-3EB3-4040-8861-D9B3ACE9FB93}</Project>
+      <Name>HomeWork29_04_19.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

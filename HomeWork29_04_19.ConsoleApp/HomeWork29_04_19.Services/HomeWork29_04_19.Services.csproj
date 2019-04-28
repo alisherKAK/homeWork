@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{822609F5-9013-442C-9167-F910C31EBB6C}</ProjectGuid>
+    <ProjectGuid>{16209F4D-3EB3-4040-8861-D9B3ACE9FB93}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HomeWork29_04_19.Models</RootNamespace>
-    <AssemblyName>HomeWork29_04_19.Models</AssemblyName>
+    <RootNamespace>HomeWork29_04_19.Services</RootNamespace>
+    <AssemblyName>HomeWork29_04_19.Services</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,7 +31,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,23 +48,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="City.cs" />
-    <Compile Include="Person.cs" />
-    <Compile Include="PurchasedTickets.cs" />
-    <Compile Include="RailwayCarriage.cs" />
-    <Compile Include="Spot.cs" />
-    <Compile Include="Stateroom.cs" />
-    <Compile Include="Ticket.cs" />
-    <Compile Include="TicketSeat.cs" />
-    <Compile Include="Train.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="SetInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HomeWork29_04_19.AbstractModels\HomeWork29_04_19.AbstractModels.csproj">
       <Project>{CD328833-B973-43A1-829F-972959084751}</Project>
       <Name>HomeWork29_04_19.AbstractModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HomeWork29_04_19.ConstantsAndEnums\HomeWork29_04_19.ConstantsAndEnums.csproj">
+      <Project>{e83b10da-4a05-42ee-950b-d80d29114137}</Project>
+      <Name>HomeWork29_04_19.ConstantsAndEnums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeWork29_04_19.DataAccess\HomeWork29_04_19.DataAccess.csproj">
+      <Project>{AC8B34A9-92CA-46A0-9E69-DD7F9B759C0C}</Project>
+      <Name>HomeWork29_04_19.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeWork29_04_19.Models\HomeWork29_04_19.Models.csproj">
+      <Project>{822609F5-9013-442C-9167-F910C31EBB6C}</Project>
+      <Name>HomeWork29_04_19.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
