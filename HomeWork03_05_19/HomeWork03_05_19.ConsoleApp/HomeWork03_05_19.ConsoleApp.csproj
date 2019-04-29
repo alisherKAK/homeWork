@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{644620C5-0FC5-4AD3-8C5A-6801A49557E7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>HomeWork03_05_19.ConsoleApp</RootNamespace>
+    <AssemblyName>HomeWork03_05_19.ConsoleApp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HomeWork03_05_19.AbstractModels\HomeWork03_05_19.AbstractModels.csproj">
+      <Project>{09ed3105-0b72-4ff1-814b-def74c831a65}</Project>
+      <Name>HomeWork03_05_19.AbstractModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeWork03_05_19.ConstantsAndEnums\HomeWork03_05_19.ConstantsAndEnums.csproj">
+      <Project>{ecf4bd9b-07e4-41db-8070-2735083cb12f}</Project>
+      <Name>HomeWork03_05_19.ConstantsAndEnums</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeWork03_05_19.DataAccess\HomeWork03_05_19.DataAccess.csproj">
+      <Project>{31e22865-09b9-4247-b357-46c918b5a2ea}</Project>
+      <Name>HomeWork03_05_19.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeWork03_05_19.Models\HomeWork03_05_19.Models.csproj">
+      <Project>{503d3aa5-cd3e-4d83-b4a2-36b9388bd69c}</Project>
+      <Name>HomeWork03_05_19.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeWork03_05_19.Services\HomeWork03_05_19.Services.csproj">
+      <Project>{25c422a9-7639-478c-8174-7500c696f43b}</Project>
+      <Name>HomeWork03_05_19.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
